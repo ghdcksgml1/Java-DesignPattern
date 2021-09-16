@@ -5,3 +5,4 @@ public class Blur implements IProcessor{
         System.out.println("Convert "+filename+" to Blur");
     }
 }
+

@@ -7,3 +7,4 @@ public class JpgConverter extends FormatConverter{
         System.out.println("Save image converted to " +filenameWithoutExtension+"."+getExtension());
     }
 }
+

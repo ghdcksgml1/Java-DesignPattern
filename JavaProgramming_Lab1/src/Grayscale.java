@@ -5,3 +5,4 @@ public class Grayscale implements IProcessor{
         System.out.println("Convert "+filename+" to Grayscale");
     }
 }
+
