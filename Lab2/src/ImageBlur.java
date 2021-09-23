@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.BufferedImageOp;
 import java.awt.image.ConvolveOp;
@@ -8,6 +7,7 @@ public class ImageBlur implements IProcessor{
     @Override
     public BufferedImage process(BufferedImage image) {
         // blur process
+        // 출처 : https://stackoverflow.com/questions/31649597/how-to-blur-a-portion-of-an-image-with-java
         float[] matrix = new float[400];
         for (int i = 0; i < 400; i++)
             matrix[i] = 1.0f/500.0f;

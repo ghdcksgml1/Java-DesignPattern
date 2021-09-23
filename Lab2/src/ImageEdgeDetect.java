@@ -1,13 +1,11 @@
-import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 public class ImageEdgeDetect implements IProcessor{
     @Override
-    public BufferedImage process(BufferedImage image) throws IOException {
+    public BufferedImage process(BufferedImage image) {
         // edgeDetect process
+        // 출처 : https://stackoverflow.com/questions/41468661/sobel-edge-detecting-program-in-java
         int x = image.getWidth();
         int y = image.getHeight();
 

@@ -5,6 +5,7 @@ public class ImageGrayscale implements IProcessor{
     @Override
     public BufferedImage process(BufferedImage image) {
         // grayscale process
+        // 출처 : 수업자료
         BufferedImage outImage =
                 new BufferedImage(image.getWidth(),image.getHeight(),image.getType());
         for(int y=0;y<image.getHeight();y++){
