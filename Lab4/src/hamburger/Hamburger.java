@@ -6,9 +6,7 @@ import java.awt.*;
 public abstract class Hamburger extends JPanel {
     private String description;
 
-    public String getDescription() {
-        return description;
-    }
+    public abstract String getDescription();
 
     public void setDescription(String description) {
         this.description = description;

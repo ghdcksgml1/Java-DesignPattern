@@ -6,7 +6,9 @@ public abstract class HamburgerIngredient extends Hamburger{
     private Hamburger hamburger;
     private Image image;
 
-    public abstract String getDescription();
+    public String getDescription(){
+        return hamburger.getDescription();
+    }
 
     public HamburgerIngredient(Hamburger hamburger) {
         this.hamburger = hamburger;
@@ -14,6 +16,6 @@ public abstract class HamburgerIngredient extends Hamburger{
 
     @Override
     public double cost() {
-        return 0;
+        return hamburger.cost();
     }
 }

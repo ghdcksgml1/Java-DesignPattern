@@ -1,5 +1,7 @@
 package hamburger;
 
+import java.awt.*;
+
 public class ShrimpPatty extends HamburgerIngredient{
     // set its image
     public ShrimpPatty(Hamburger hamburger){
@@ -8,6 +10,13 @@ public class ShrimpPatty extends HamburgerIngredient{
 
     @Override
     public String getDescription() {
-        return null;
+        return super.getDescription()+" ShrimpPatty";
+    }
+    public void paintComponent(Graphics g){
+
+    }
+    @Override
+    public double cost(){
+        return super.cost() + 900;
     }
 }
