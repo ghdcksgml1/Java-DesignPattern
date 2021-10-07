@@ -1,10 +1,7 @@
 package hamburger;
 
-import java.awt.*;
-
 public abstract class HamburgerIngredient extends Hamburger{
     private Hamburger hamburger;
-    private Image image;
 
     public String getDescription(){
         return hamburger.getDescription();
