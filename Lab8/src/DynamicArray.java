@@ -1,18 +1,20 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+// DataCollection을 implements하는 DynamicArray
 public class DynamicArray<E> implements DataCollection<E>{
-    private int length;
-    private int capacity;
-    private E[] data;
+    private int length; // null이 아닌 배열의 길이
+    private int capacity; // 배열의 용량
+    private E[] data; // 제네릭의 배열형태
 
+    // constructor
     public DynamicArray(){
         this.length = 0;
         this.capacity = 5;
-        this.data = (E[]) new Object[capacity];
+        this.data = (E[]) new Object[capacity]; // DynamicArray객체가 생성될때 기본으로 capacity길이 만큼의 제네릭 배열을 생성함.
     }
 
-    // [추가코드] 용량이 꽉찼을때, 데이터를 받아 추가해주는 코드
+    // 용량이 꽉찼을때, 데이터를 받아 추가해주는 코드
     private void copy(E data, int newCapacity){
         E[] new_data = (E[]) new Object[newCapacity];
         for(int i=0;i<newCapacity-1;i++){
@@ -22,7 +24,7 @@ public class DynamicArray<E> implements DataCollection<E>{
         this.data = new_data;
     }
 
-    // [추가코드] 용량이 꽉찼을때, 데이터를 중간에 삽입해주는 코드
+    // 용량이 꽉찼을때, 데이터를 중간에 삽입해주는 코드
     private void copy(int index, E data, int newCapacity){
         E[] new_data = (E[]) new Object[newCapacity];
         for(int i = 0; i < index; i++){
@@ -35,6 +37,7 @@ public class DynamicArray<E> implements DataCollection<E>{
         this.data = new_data;
     }
 
+    // 배열을 맨뒤에 추가하는 메소드
     @Override
     public void put(E e) {
        if(length >= capacity){
@@ -47,14 +50,16 @@ public class DynamicArray<E> implements DataCollection<E>{
        }
     }
 
+    // 배열의 index에 해당 객체를 추가하는 메소드
     @Override
     public void insert(int index, E e) {
-        if(length >= capacity){
+        // 객체를 추가했을때 배열의 길이가 용량보다 크면 동적으로 용량을 증가시킨다.
+        if(length+1 >= capacity){
             System.out.println("동적으로 용량 증가");
             length++; capacity++;
             copy(index, e, capacity);
         }else{
-            for(int i=length;i>index;i++){
+            for(int i=length;i>index;i--){
                 this.data[i] = this.data[i-1];
             }
             this.data[index] = e;
@@ -62,8 +67,10 @@ public class DynamicArray<E> implements DataCollection<E>{
         }
     }
 
+    // 해당 인덱스의 객체를 제거시키는 메소드
     @Override
     public void remove(int index) {
+        // 배열이 비어있을때에는 해당기능을 수행하지 않는다.
         if (index < 0 || index >= length) {
             System.out.println("배열이 비어있습니다.");
         }
@@ -76,22 +83,26 @@ public class DynamicArray<E> implements DataCollection<E>{
         }
     }
 
+    // 해당 인덱스의 객체의 값을 가져온다.
     @Override
     public E elemAt(int index) {
         return this.data[index];
     }
 
+    // 현재 배열의 길이를 반환한다.
     @Override
     public int length() {
         return data.length;
     }
 
+    // 현재 저장되어있는 배열을 초기화시킨다.
     @Override
     public void clear() {
         E[] new_data = (E[]) new Object[5];
         this.data = new_data;
     }
 
+    // Iterator 구현
     private class DynamicArrayIterator<E> implements Iterator<E>{
         private int index = 0;
 
@@ -114,6 +125,7 @@ public class DynamicArray<E> implements DataCollection<E>{
         }
     }
 
+    // iterator를 실행시킬때, DynamicArrayIterator의 구현을 실행한다.
     @Override
     public Iterator iterator() {
         return new DynamicArrayIterator<E>();
